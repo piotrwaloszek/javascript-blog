@@ -1,7 +1,4 @@
 'use strict';
-const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
 
 const titleClickHandler = function(event){
     console.log('Link was clicked!');
