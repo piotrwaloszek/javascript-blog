@@ -23,9 +23,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
     "autoprefixer-cli": "^1.0.0",
     "browser-sync": "^2.26.13",
     "css-validator": "^0.9.0",
+    "eslint": "^7.20.0",
+    "eslint-plugin-react": "^7.22.0",
     "html-validate": "^4.3.0",
     "mkdirp": "^1.0.4",
     "node-sass": "^5.0.0",

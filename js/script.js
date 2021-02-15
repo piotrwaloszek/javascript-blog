@@ -46,6 +46,10 @@ const titleClickHandler = function(event){
 }
 function generateTitleLinks(){
 
+    const optArticleSelector = '.post',
+        optTitleSelector = '.post-title',
+        optTitleListSelector = '.titles';
+
     /* [DONE] remove contents of titleList */
 
     const titleList = document.querySelector(optTitleListSelector);
@@ -76,8 +80,11 @@ function generateTitleLinks(){
         html = html + linkHTML;
     }
     titleList.innerHTML = html;
+
+    
 }
 generateTitleLinks();
+
 const links = document.querySelectorAll('.titles a');
 console.log(links)
   
