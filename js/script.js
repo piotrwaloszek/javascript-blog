@@ -58,13 +58,12 @@ function generateTags(){
 
   for(let article of articles) {
     const taglist = article.querySelector(optArticleTagSelector);
-    taglist.innerHTML = '';
     let html = '';
     const articleTags = article.getAttribute('data-tags');
     const articleTagsArray = articleTags.split(' ');
 
     for (let tag of articleTagsArray){
-      const tagHTML = '<li><a href="#tag-' + articleTagsArray + '"><span>' + articleTagsArray + '</span></a></li>';
+      const tagHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       console.log(tagHTML);
       html = tagHTML;
     }
