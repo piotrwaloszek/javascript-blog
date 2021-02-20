@@ -1,9 +1,9 @@
 'use strict';
 const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles',
-    optArticleTagSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles',
+  optArticleTagSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author';
 
 const titleClickHandler = function(event) {
   event.preventDefault();
@@ -105,12 +105,9 @@ function generateAuthors(){
     const authorList = article.querySelector(optArticleAuthorSelector);
     let html = '';
     const articleAuthor = article.getAttribute('data-author');
-
-    for (let author of articleAuthor){
-      const authorHTML = '<a href="#author-' + articleAuthor +'"><span>' + articleAuthor + '</span></a>';
-      console.log(authorHTML);
-      html = authorHTML;
-    }
+    const authorHTML = '<a href="#author-' + articleAuthor +'"><span>' + articleAuthor + '</span></a>';
+    console.log(authorHTML);
+    html = authorHTML;
     authorList.innerHTML = html;
   }
 }
