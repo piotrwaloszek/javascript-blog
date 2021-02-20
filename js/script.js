@@ -4,6 +4,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagSelector = '.post-tags .list',
   optArticleAuthorSelector = '.post-author';
+  //optTagsListSelector = '.tags.list';
+  //optCloudClassCount = '5',
+  //optCloudClassPrefix = 'tag-size-';
 
 const titleClickHandler = function(event) {
   event.preventDefault();
@@ -48,8 +51,21 @@ function generateTitleLinks(customSelector = '') {
   }
 }
 generateTitleLinks();
+function calculateTagsParams(tags){
+  let max = 0, min = 99999, tagsParams = {min, max};
+  console.log(calculateTagsParams);
 
+  for (let tag in tags) {
+    tagsParams.max = Math.max(tags[tag], tagsParams.max);
+    tagsParams.min = Math.min(tags[tag], tagsParams.min);
+  }
+  return tagsParams;
+}
+//function calculateTagClass(count,params){
+
+//}
 function generateTags(){
+  let allTags = {};
   const articles = document.querySelectorAll(optArticleSelector);
 
   for (let article of articles){
@@ -61,10 +77,23 @@ function generateTags(){
     for (let tag of articleTagsArray){
       const tagHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       html = html + tagHTML;
-      
+      if(!allTags[tag]){
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
+      }
     }
     taglist.innerHTML = html;
   }
+  const taglist = document.querySelector('.tags'),
+    tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
+  let allTagsHTML = '';
+  
+  for (let tag in allTags){
+    allTagsHTML += tag +' (' + allTags[tag] + ') ';
+  }
+  taglist.innerHTML = allTagsHTML;
 }
 generateTags();
 
@@ -104,9 +133,8 @@ function generateAuthors(){
   for (let article of articles){
     const authorList = article.querySelector(optArticleAuthorSelector);
     let html = '';
-    const articleAuthor = article.getAttribute('data-author');
-    const authorHTML = '<a href="#author-' + articleAuthor +'"><span>' + articleAuthor + '</span></a>';
-    console.log(authorHTML);
+    const articleAuthor = article.getAttribute('data-author'),
+      authorHTML = '<a href="#author-' + articleAuthor +'"><span>' + articleAuthor + '</span></a>';
     html = authorHTML;
     authorList.innerHTML = html;
   }
