@@ -6,8 +6,7 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   //optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-',
-  optCloudAuthorClassPrefix = 'author-size-';
+  optCloudClassPrefix = 'tag-size-';
 
 const titleClickHandler = function(event) {
   event.preventDefault();
@@ -78,13 +77,6 @@ function calculateTagClass(count,params){
     percentage = normalizedCount / normalizedMax,
     classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
   return optCloudClassPrefix + classNumber;
-}
-function calculateAuthorClass(count,params){
-  const normalizedCount = count - params.min,
-    normalizedMax = params.max - params.min,
-    percentage = normalizedCount / normalizedMax,
-    classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
-  return optCloudAuthorClassPrefix + classNumber;
 }
 function generateTags(){
   let allTags = {};
@@ -172,7 +164,7 @@ function generateAuthors(){
   let allAuthorsHTML = '';
 
   for (let author in allAuthors){
-    allAuthorsHTML += '<li><a href="#author-' + author + '" class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '">' + author + '</a></li>';
+    allAuthorsHTML += '<li><a href="#author-' + author + '">' + author + ' (' + (allAuthors[author]) + ')</a></li>';
   }
   authorList.innerHTML = allAuthorsHTML;
 }
