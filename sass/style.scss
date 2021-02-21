@@ -93,12 +93,70 @@ body {
   }
 }
 
+/* Tags */
+
+.list.tags {
+  display: inline-block;
+}
+
+.list.tags .tag-size-1 {
+  font-size: 16px;
+  color: chocolate;
+}
+
+.list.tags .tag-size-2 {
+  font-size: 18px;
+  color: darkblue;
+}
+
+.list.tags .tag-size-3 {
+  font-size: 20px;
+  color: cornflowerblue;
+}
+
+.list.tags .tag-size-4 {
+  font-size: 22px;
+  color: darkmagenta;
+}
+
+.list.tags .tag-size-5 {
+  font-size: 24px;
+  color: cadetblue;
+}
+
 /* Authors */
 
 .authors {
+  display: inline-block;
+  
   li {
     margin-bottom: 12px;
   }
+}
+
+.authors .author-size-1 {
+  font-size: 16px;
+  color: chocolate;
+}
+
+.authors .author-size-2 {
+  font-size: 18px;
+  color: darkblue;
+}
+
+.authors .author-size-3 {
+  font-size: 20px;
+  color: cornflowerblue;
+}
+
+.authors .author-size-4 {
+  font-size: 22px;
+  color: darkmagenta;
+}
+
+.authors .author-size-5 {
+  font-size: 24px;
+  color: cadetblue;
 }
 
 /* Post */
