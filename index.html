@@ -180,7 +180,7 @@
         <script id="template-tag-cloud-link" type="text/x-handlebars-template">
           <ul>
               {{#each tags}}
-              <li><a href="#tag-{{tag}}" class="{{className}}">{{tag}}</a></li>
+              <li><a class="{{ className }}" href="#tag-{{ tag }}">{{ tag }}</a></li>
               {{/each}}
           </ul>
       </script>
@@ -195,3 +195,4 @@
         <script src="js/script.js"></script>
     </body>
 </html>
+

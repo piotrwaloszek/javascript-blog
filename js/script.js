@@ -60,14 +60,12 @@ function generateTitleLinks(customSelector = '') {
 }
 generateTitleLinks();
 function calculateTagsParams(tags){
-  let max = 0, min = 99999, tagsParams = {min, max};
-  console.log(calculateTagsParams);
-
-  for (let tag in tags) {
-    tagsParams.max = Math.max(tags[tag], tagsParams.max);
-    tagsParams.min = Math.min(tags[tag], tagsParams.min);
+  const params = {max: 0, min: 999999};
+  for(let tag in tags){
+    params.max = Math.max(tags[tag], params.max);
+    params.min = Math.min(tags[tag], params.min);
   }
-  return tagsParams;
+  return params;
 }
 function calculateAuthorsParams(authors){
   let max = 0, min = 99999, authorsParams = {min, max};
@@ -95,7 +93,7 @@ function generateTags(){
     let html = '';
     const articleTags = article.getAttribute('data-tags');
     const articleTagsArray = articleTags.split(' ');
-    
+
     for (let tag of articleTagsArray){
       const linkTagData = {tag: tag};
       const tagHTML = templates.articleTag(linkTagData);
@@ -111,17 +109,18 @@ function generateTags(){
   const taglist = document.querySelector('.tags'),
     tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams:', tagsParams);
-  let allTagsData = {tags: []};
-  
+  const allTagsData = {tags: []};
+
   for (let tag in allTags){
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
-      classname: calculateTagClass(allTags[tag], tagsParams)
+      className: calculateTagClass(allTags[tag], tagsParams)
     });
     //old HTML code: allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
   }
   taglist.innerHTML = templates.tagCloudLink(allTagsData);
+  console.log(allTagsData);
 }
 generateTags();
 
@@ -131,7 +130,7 @@ function tagClickHandler(event){
     href = clickedElement.getAttribute('href'),
     tag = href.replace('#tag-', ''),
     activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
-    
+
 
   for (let activeTag of activeTags){
     activeTag.classList.remove('active');
@@ -164,7 +163,7 @@ function generateAuthors(){
     let html = '';
     const articleAuthor = article.getAttribute('data-author'),
       linkAuthorData = {author: articleAuthor},
-      authorHTML = templates.articleAuthor(linkAuthorData);   
+      authorHTML = templates.articleAuthor(linkAuthorData);
     html = html + authorHTML;
     if(!allAuthors[articleAuthor]){
       allAuthors[articleAuthor] = 1;
@@ -204,7 +203,7 @@ function authorClickHandler(event){
   for (let clickedAuthor of clickedAuthors){
     clickedAuthor.classList.add('active');
   }
-  generateTitleLinks('[data-author="' + author + '"]');  
+  generateTitleLinks('[data-author="' + author + '"]');
 }
 
 function addClickListenersToAuthors(){
